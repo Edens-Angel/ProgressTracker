@@ -1,0 +1,22 @@
+[
+    {
+        "name": "One",
+        "kg": 50
+    },
+    {
+        "name": "Two",
+        "kg": 30
+    },
+    {
+        "name": "Three",
+        "kg": 25
+    },
+    {
+        "name": "Four",
+        "kg": 12
+    },
+    {
+        "name": "Five",
+        "kg": 60
+    }
+]
