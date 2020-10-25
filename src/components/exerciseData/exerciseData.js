@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import data from '../../exercises.json';
 
 class ExerciseData extends Component {
-    state = {  }
+    state = { 
+        exercises: data,
+        tags: [1, 2, 3, 4]
+     }
     
     loadExercises(){
-         data.map( data => {
-            return (
+         return this.state.exercises.map( data =>
                 <tr>
-                    <td key={data.exercise}></td>
-                    <td key={data.kg}></td>
-                </tr>
-            )
-        })
+                    <td key={data.name}>{data.name}</td>
+                    <td key={data.name}>{data.kg}</td>
+                </tr> 
+        )
     };
 
     render() { 
         return (
             <div>
-                <Table striped bordered  variant="dark">
+                <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             <th>Exercise</th>
@@ -29,7 +30,7 @@ class ExerciseData extends Component {
                         </tr>    
                     </thead>
                     <tbody>
-                        {/* TODO data */}
+                        {this.loadExercises()}
                     </tbody>
                 </Table>
             </div> 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styles from './dataContainer.module.css'
+import './dataContainer.css';
 
 class DataContainer extends Component {
     state = {  }
     render() { 
         return ( 
-            <div className={styles.dataContainer}> 
+            <div className="dataContainer"> 
                 <h1>test</h1>
             </div>
          );
