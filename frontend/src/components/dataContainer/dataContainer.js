@@ -6,7 +6,7 @@ class DataContainer extends Component {
     render() { 
         return ( 
             <div className="dataContainer"> 
-                <h1>test</h1>
+                <h1>Data</h1>
             </div>
          );
     }
