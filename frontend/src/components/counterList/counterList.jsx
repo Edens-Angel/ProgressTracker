@@ -24,23 +24,25 @@ class CounterList extends Component {
     }
 
     handleIncrement(counter){
-        const counters = [...this.state.counters]
-        let newCounter = counters.find(e => {return e.id === counter.id});
-        newCounter.value += 1
-        this.setState(counters)
+        this.updateCounterValue(counter, counter.value++)
     }
 
     handleDecrement(counter){
-        const counters = [...this.state.counters]
-        const index = counters.indexOf(counter)
-        counters[index].value -= 1
-        this.setState(counters)
+        this.updateCounterValue(counter, counter.value--)
     }
 
     handleDelete(counter){
-        const {id} = counter
-        const newCounterList = this.state.counters.filter(counter => counter.id !== id)
-        this.setState({counters: newCounterList})
+        const currentCounter = this.state.counters.find(item => item.id == counter.id)
+        const {id} = currentCounter
+        axios.delete(`http://localhost:3000/counter/${id}`)
+        .then(data => {
+            this.getAllCounters()
+            // set state
+        }).catch(err => {
+            console.log(err);
+        })
+
+        // this.setState({counters: newCounterList})
     }
 
    async getAllCounters(){
@@ -65,6 +67,17 @@ class CounterList extends Component {
             value: Math.floor(Math.random() * 1000)
         })
         .then(data => {
+            this.getAllCounters()
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    async updateCounterValue(counter, value){
+        const {id} = counter
+        await axios.patch(`http://localhost:3000/counter/${id}`, {
+            value: value
+        }).then(data => {
             this.getAllCounters()
         }).catch(err => {
             console.log(err);
