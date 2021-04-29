@@ -6,7 +6,6 @@ require("dotenv/config")
 
 const app = express()
 const PORT = 3000
-
 // middleware
 app.use(bodyParser.json())
 app.use(cors())
@@ -18,7 +17,7 @@ app.use("/counter", counterRoutes)
 
 
 // database connection
-const dbName = "counters"
+const dbName = "progress"
 dbString = `mongodb+srv://admin:${process.env.dbPassword}@cluster0.1oo9i.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
 mongoose.connect(dbString, { 
